@@ -17,70 +17,70 @@
             --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             --border-radius: 8px;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Roboto, Arial, sans-serif;
         }
-        
+
         body {
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-        
+
         header {
             background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: var(--white);
             padding: 20px 0;
             box-shadow: var(--shadow);
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         nav ul {
             display: flex;
             list-style: none;
         }
-        
+
         nav ul li {
             margin-left: 20px;
         }
-        
+
         nav ul li a {
             color: var(--white);
             text-decoration: none;
             transition: opacity 0.3s;
         }
-        
+
         nav ul li a:hover {
             opacity: 0.8;
         }
-        
+
         .hero {
             text-align: center;
             padding: 60px 0;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
                         url('/api/placeholder/1200/400') center/cover no-repeat;
         }
-        
+
         .hero h1 {
             font-size: 48px;
             margin-bottom: 16px;
@@ -89,14 +89,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        
+
         .hero p {
             font-size: 20px;
             color: var(--text-light);
             max-width: 700px;
             margin: 0 auto 32px;
         }
-        
+
         .upload-section {
             background-color: var(--white);
             border-radius: var(--border-radius);
@@ -106,7 +106,7 @@
             box-shadow: var(--shadow);
             text-align: center;
         }
-        
+
         .upload-box {
             border: 2px dashed var(--secondary);
             border-radius: var(--border-radius);
@@ -115,21 +115,21 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        
+
         .upload-box:hover {
             background-color: rgba(79, 195, 247, 0.1);
         }
-        
+
         .upload-box i {
             font-size: 48px;
             color: var(--secondary);
             margin-bottom: 16px;
         }
-        
+
         .upload-box p {
             color: var(--text-light);
         }
-        
+
         .btn {
             background-color: var(--primary);
             color: var(--white);
@@ -141,102 +141,17 @@
             transition: background-color 0.3s;
             margin: 10px;
         }
-        
+
         .btn:hover {
             background-color: var(--primary-dark);
         }
-        
-        .results-section {
-            display: none;
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            padding: 40px;
-            margin: 40px auto;
-            max-width: 800px;
-            box-shadow: var(--shadow);
-        }
-        
-        .preview-container {
-            display: flex;
-            margin-bottom: 30px;
-            gap: 20px;
-        }
-        
-        .image-preview {
-            flex: 1;
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            box-shadow: var(--shadow);
-        }
-        
-        .image-preview img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        
-        .defect-details {
-            flex: 1;
-        }
-        
-        .defect-details h3 {
-            color: var(--primary);
-            margin-bottom: 16px;
-        }
-        
-        .detail-card {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-bottom: 20px;
-        }
-        
-        .detail-card h4 {
-            color: var(--accent);
-            margin-bottom: 8px;
-        }
-        
-        .actions-container {
-            background-color: #f5f5f5;
-            padding: 20px;
-            border-radius: var(--border-radius);
-        }
-        
-        .tab-container {
-            margin-top: 30px;
-        }
-        
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            border-bottom: 3px solid transparent;
-        }
-        
-        .tab.active {
-            color: var(--primary);
-            border-bottom: 3px solid var(--primary);
-        }
-        
-        .tab-content {
-            display: none;
-        }
-        
-        .tab-content.active {
-            display: block;
-        }
-        
+
         .loading {
             display: none;
             text-align: center;
             padding: 40px 0;
         }
-        
+
         .spinner {
             border: 4px solid rgba(0, 0, 0, 0.1);
             border-radius: 50%;
@@ -246,19 +161,104 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
         }
-        
+
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
+
+        .results-section {
+            display: none;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+        }
+
+        .preview-container {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .image-preview {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .image-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .defect-details {
+            flex: 1;
+        }
+
+        .defect-details h3 {
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .detail-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .detail-card h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .actions-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+
+        .tab-container {
+            margin-top: 30px;
+        }
+
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+
+        .tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 16px;
             margin-top: 20px;
         }
-        
+
         .stat-card {
             background-color: var(--white);
             padding: 16px;
@@ -266,74 +266,74 @@
             box-shadow: var(--shadow);
             text-align: center;
         }
-        
+
         .stat-card h4 {
             font-size: 14px;
             color: var(--text-light);
             margin-bottom: 8px;
         }
-        
+
         .stat-card p {
             font-size: 24px;
             font-weight: bold;
             color: var(--primary);
         }
-        
+
         .actions-list {
             list-style: none;
         }
-        
+
         .actions-list li {
             padding: 8px 0;
             border-bottom: 1px solid #eee;
         }
-        
+
         .actions-list li:last-child {
             border-bottom: none;
         }
-        
+
         footer {
             background-color: #333;
             color: var(--white);
             padding: 40px 0;
             margin-top: 60px;
         }
-        
+
         .footer-content {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
         }
-        
+
         .footer-column {
             flex: 1;
             min-width: 200px;
             margin-bottom: 20px;
         }
-        
+
         .footer-column h3 {
             font-size: 18px;
             margin-bottom: 16px;
         }
-        
+
         .footer-column ul {
             list-style: none;
         }
-        
+
         .footer-column ul li {
             margin-bottom: 8px;
         }
-        
+
         .footer-column ul li a {
             color: #bbb;
             text-decoration: none;
             transition: color 0.3s;
         }
-        
+
         .footer-column ul li a:hover {
             color: var(--white);
         }
-        
+
         .copyright {
             text-align: center;
             padding-top: 20px;
@@ -341,28 +341,48 @@
             margin-top: 20px;
             color: #bbb;
         }
-        
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
                 text-align: center;
             }
-            
+
             nav ul {
                 margin-top: 16px;
             }
-            
+
             .preview-container {
                 flex-direction: column;
             }
-            
+
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
             }
-            
+
             .footer-content {
                 flex-direction: column;
             }
+        }
+
+        .about-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+        }
+
+        .about-section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .about-section p {
+            color: var(--text-light);
+            line-height: 1.8;
         }
     </style>
 </head>
@@ -380,7 +400,7 @@
             </nav>
         </div>
     </header>
-    
+
     <section class="hero">
         <div class="container">
             <h1>Industry 4.0</h1>
@@ -388,33 +408,33 @@
             <p>Upload an image of any manufacturing component and get AI-powered analysis of defects, causes, and recommended solutions.</p>
         </div>
     </section>
-    
+
     <section class="upload-section container">
         <h2>Upload Product Image</h2>
         <p>Drag and drop your image or click to select a file</p>
-        
+
         <div class="upload-box" id="uploadBox">
             <i>📁</i>
             <p>JPG, PNG or BMP files (Max 10MB)</p>
             <input type="file" id="fileInput" accept="image/*" style="display: none;">
         </div>
-        
+
         <button class="btn" id="analyzeBtn">Analyze Defect</button>
     </section>
-    
+
     <div class="loading" id="loadingSection">
         <div class="spinner"></div>
         <p>Analyzing image for defects...</p>
     </div>
-    
+
     <section class="results-section" id="resultsSection">
         <h2>Defect Analysis Results</h2>
-        
+
         <div class="preview-container">
             <div class="image-preview">
                 <img id="previewImage" src="/api/placeholder/400/300" alt="Product image">
             </div>
-            
+
             <div class="defect-details">
                 <h3>Defect Details</h3>
                 <div class="detail-card">
@@ -427,22 +447,22 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="tab-container">
             <div class="tabs">
                 <div class="tab active" data-tab="overview">Overview</div>
                 <div class="tab" data-tab="recommendations">Recommendations</div>
                 <div class="tab" data-tab="statistics">Statistics</div>
             </div>
-            
+
             <div class="tab-content active" id="overview">
                 <h3>Defect Overview</h3>
                 <p id="defectOverview">This appears to be a longitudinal surface crack extending approximately 2.3cm along the edge of the component. This type of defect typically occurs during rapid cooling of the material or excessive stress during the manufacturing process. The crack depth is estimated at 0.8mm, which exceeds acceptable thresholds for this component type.</p>
-                
+
                 <h3>Impact Assessment</h3>
                 <p id="defectImpact">This defect significantly reduces the structural integrity of the component, leading to potential failure under load conditions. Components with this defect type have an estimated 73% higher failure rate and reduced operational lifespan by approximately 45%. Immediate replacement is recommended.</p>
             </div>
-            
+
             <div class="tab-content" id="recommendations">
                 <h3>Recommended Actions</h3>
                 <div class="actions-container">
@@ -454,11 +474,11 @@
                         <li>Consider stress-relief heat treatment before final machining</li>
                     </ol>
                 </div>
-                
+
                 <h3>Prevention Strategy</h3>
                 <p id="preventionStrategy">To prevent future occurrences of this defect, implement a slower cooling process with controlled temperature gradients. Monitor environmental variables during manufacturing, particularly humidity and ambient temperature. Consider implementing automated visual inspection systems at multiple points in the production line to catch defects earlier.</p>
             </div>
-            
+
             <div class="tab-content" id="statistics">
                 <h3>Defect Statistics</h3>
                 <div class="stats-grid">
@@ -479,15 +499,28 @@
                         <p>4.5 hrs</p>
                     </div>
                 </div>
-                
+
                 <h3>Historical Comparison</h3>
                 <p>This defect pattern matches historical cases from similar manufacturing processes. The severity is higher than 78% of previously documented cases, suggesting a significant deviation in production parameters.</p>
             </div>
         </div>
-        
+
         <button class="btn" id="newAnalysisBtn">Start New Analysis</button>
     </section>
-    
+
+    <section class="about-section container">
+        <h2>About Us</h2>
+        <p>This defect detection system is developed by:</p>
+        <p><strong>Group - 9</strong></p>
+        <ul>
+            <li>Utkarsh raj - 114123102</li>
+            <li>Venkat - 114123106</li>
+            <li>Sirivardhan - 114123104</li>
+            <li>V Indhumati - 114123110</li>
+            <li>Villa pavan kaushik - 114123108</li>
+        </ul>
+    </section>
+
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -540,30 +573,100 @@
             const newAnalysisBtn = document.getElementById('newAnalysisBtn');
             const tabs = document.querySelectorAll('.tab');
             const tabContents = document.querySelectorAll('.tab-content');
-            
-            // Mock defect data for demonstration
-            const defectData = {
-                type: "Surface Crack - Severity: High",
-                causes: "Material stress during cooling process, improper handling during production",
-                overview: "This appears to be a longitudinal surface crack extending approximately 2.3cm along the edge of the component. This type of defect typically occurs during rapid cooling of the material or excessive stress during the manufacturing process. The crack depth is estimated at 0.8mm, which exceeds acceptable thresholds for this component type.",
-                impact: "This defect significantly reduces the structural integrity of the component, leading to potential failure under load conditions. Components with this defect type have an estimated 73% higher failure rate and reduced operational lifespan by approximately 45%. Immediate replacement is recommended.",
-                prevention: "To prevent future occurrences of this defect, implement a slower cooling process with controlled temperature gradients. Monitor environmental variables during manufacturing, particularly humidity and ambient temperature. Consider implementing automated visual inspection systems at multiple points in the production line to catch defects earlier."
-            };
-            
+            const defectTypeElement = document.getElementById('defectType');
+            const defectCausesElement = document.getElementById('defectCauses');
+            const defectOverviewElement = document.getElementById('defectOverview');
+            const defectImpactElement = document.getElementById('defectImpact');
+            const preventionStrategyElement = document.getElementById('preventionStrategy');
+
+            // Mock defect data samples
+            const allDefectData = [
+                {
+                    type: "Surface Crack - Severity: High",
+                    causes: "Material stress during cooling process, improper handling during production",
+                    overview: "This appears to be a longitudinal surface crack extending approximately 2.3cm along the edge of the component. This type of defect typically occurs during rapid cooling of the material or excessive stress during the manufacturing process. The crack depth is estimated at 0.8mm, which exceeds acceptable thresholds for this component type.",
+                    impact: "This defect significantly reduces the structural integrity of the component, leading to potential failure under load conditions. Components with this defect type have an estimated 73% higher failure rate and reduced operational lifespan by approximately 45%. Immediate replacement is recommended.",
+                    prevention: "To prevent future occurrences of this defect, implement a slower cooling process with controlled temperature gradients. Monitor environmental variables during manufacturing, particularly humidity and ambient temperature. Consider implementing automated visual inspection systems at multiple points in the production line to catch defects earlier."
+                },
+                {
+                    type: "Weld Porosity - Severity: Medium",
+                    causes: "Insufficient shielding gas, improper welding technique, contaminated welding material",
+                    overview: "Multiple small pores are observed within the weld bead, indicating trapped gases during the welding process. The total area affected by porosity is approximately 5% of the weld surface. This can lead to reduced weld strength and potential fatigue failure under stress.",
+                    impact: "Weld porosity can decrease the tensile strength of the joint by up to 15%. Components subjected to cyclic loading are at a higher risk of failure. Repair or rework of the weld is recommended to ensure structural integrity.",
+                    prevention: "Ensure adequate shielding gas flow rate and coverage during welding. Use proper welding techniques and ensure the base and filler materials are clean and free from contaminants. Regularly inspect welding equipment for any malfunctions."
+                },
+                {
+                    type: "Corrosion Spot - Severity: Low",
+                    causes: "Exposure to moisture and oxygen, lack of protective coating, environmental factors",
+                    overview: "A small area of surface corrosion is visible, approximately 1.5cm in diameter. The corrosion appears to be in its early stages with minimal material degradation. While currently low severity, it may spread if not addressed.",
+                    impact: "In the short term, this corrosion spot has a minimal impact on the component's functionality. However, if left untreated, it can lead to significant material loss and structural weakening over time. Cleaning and application of a protective coating are recommended.",
+                    prevention: "Apply a suitable protective coating to all susceptible surfaces. Store components in a dry environment with controlled humidity. Implement regular inspection and maintenance schedules to identify and treat corrosion in its early stages."
+                },
+                {
+                    type: "Scratch - Severity: Very Low",
+                    causes: "Handling during assembly, contact with abrasive surfaces, minor impact",
+                    overview: "A superficial scratch is observed on the surface, approximately 3cm in length and less than 0.1mm deep. This defect is primarily cosmetic and does not significantly affect the component's structural integrity or functionality.",
+                    impact: "The scratch is unlikely to cause any functional issues. However, it may affect the aesthetic appearance of the product. Depending on the application, minor polishing or touch-up may be considered.",
+                    prevention: "Implement careful handling procedures during assembly and transportation. Use protective packaging to prevent contact with abrasive surfaces. Train personnel on proper handling techniques to minimize the risk of scratches."
+                },
+                {
+                    type: "Deformation - Severity: Medium",
+                    causes: "Excessive force applied during manufacturing, impact during transportation, improper storage",
+                    overview: "A slight bending or warping is observed in the component, with a maximum deviation of approximately 2mm from its intended shape. This deformation may affect the fit or function of the component within a larger assembly.",
+                    impact: "The deformation may prevent proper assembly or lead to increased stress on other components. Depending on the severity and location, the component may need to be straightened or replaced. Investigate the cause of deformation to prevent future occurrences.",
+                    prevention: "Review and adjust manufacturing processes to avoid applying excessive force. Use appropriate packaging and handling procedures during transportation. Ensure components are stored correctly to prevent physical damage."
+                },
+                {
+                    type: "Paint Chip - Severity: Low",
+                    causes: "Impact during handling, abrasion, poor paint adhesion",
+                    overview: "A small chip in the paint layer is visible, exposing the underlying material. The affected area is approximately 1cm in diameter. While primarily cosmetic, it can lead to corrosion if the base material is susceptible.",
+                    impact: "The paint chip does not immediately affect the component's function but can compromise its aesthetic appeal and long-term protection against corrosion. Touch-up painting is recommended.",
+                    prevention: "Ensure proper surface preparation before painting. Use high-quality paint with good adhesion properties. Implement careful handling procedures to avoid impacts and abrasion."
+                },
+                {
+                    type: "Missing Component - Severity: Critical",
+                    causes: "Omission during assembly, fall-off due to loose fitting, incorrect bill of materials",
+                    overview: "A critical component, identified as part number XYZ-123, is missing from the assembly. This will prevent the product from functioning as intended.",
+                    impact: "The missing component renders the product unusable. It must be sourced and installed before the product can be shipped or used. Review assembly procedures and bill of materials for accuracy.",
+                    prevention: "Implement strict assembly verification processes, potentially using automated systems. Ensure all components are correctly fitted and secured. Regularly audit the bill of materials against the design specifications."
+                },
+                {
+                    type: "Loose Fastener - Severity: Medium",
+                    causes: "Insufficient torque during assembly, vibration during operation, improper fastener selection",
+                    overview: "One of the main mounting screws is found to be loose and can be turned by hand. This may lead to instability or misalignment of the component.",
+                    impact: "A loose fastener can cause the component to move or vibrate excessively, potentially leading to damage or failure of the assembly. The fastener should be tightened to the specified torque.",
+                    prevention: "Ensure all fasteners are tightened to the correct torque during assembly. Use appropriate locking mechanisms if the component is subject to vibration. Verify the correct type and size of fastener are being used."
+                },
+                {
+                    type: "Contamination - Severity: Low",
+                    causes: "Dust or debris from the manufacturing environment, improper cleaning procedures, inadequate packaging",
+                    overview: "A layer of dust and small debris is observed on the surface of the component. While not currently affecting functionality, it may cause issues in sensitive applications.",
+                    impact: "The contamination is generally cosmetic but can interfere with the performance of optical or electrical components. Cleaning the component before use or further assembly is recommended.",
+                    prevention: "Maintain a clean manufacturing environment. Implement thorough cleaning procedures for components before packaging. Use appropriate packaging to prevent contamination during storage and transportation."
+                },
+                {
+                    type: "Burn Mark - Severity: Medium",
+                    causes: "Overheating during processing, electrical short circuit, exposure to high temperature source",
+                    overview: "A small burn mark is visible on the surface, indicating localized overheating. The affected area shows discoloration and potential material degradation.",
+                    impact: "The burn mark suggests that the component may have been subjected to excessive temperature, which could have compromised its structural or electrical properties. Further inspection and testing are recommended.",
+                    prevention: "Monitor and control temperatures during manufacturing processes. Ensure electrical systems are properly insulated and protected against short circuits. Avoid exposing components to high temperature sources."
+                }
+            ];
+
             // Upload functionality
             uploadBox.addEventListener('click', function() {
                 fileInput.click();
             });
-            
+
             uploadBox.addEventListener('dragover', function(e) {
                 e.preventDefault();
                 uploadBox.style.backgroundColor = 'rgba(79, 195, 247, 0.1)';
             });
-            
+
             uploadBox.addEventListener('dragleave', function() {
                 uploadBox.style.backgroundColor = '';
             });
-            
+
             uploadBox.addEventListener('drop', function(e) {
                 e.preventDefault();
                 uploadBox.style.backgroundColor = '';
@@ -571,13 +674,13 @@
                     handleFile(e.dataTransfer.files[0]);
                 }
             });
-            
+
             fileInput.addEventListener('change', function() {
                 if (fileInput.files.length) {
                     handleFile(fileInput.files[0]);
                 }
             });
-            
+
             function handleFile(file) {
                 if (file.type.startsWith('image/')) {
                     const reader = new FileReader();
@@ -590,44 +693,48 @@
                     alert('Please select an image file');
                 }
             }
-            
+
             // Analysis functionality
             analyzeBtn.addEventListener('click', function() {
                 if (previewImage.src.includes('placeholder')) {
                     alert('Please upload an image first');
                     return;
                 }
-                
+
                 loadingSection.style.display = 'block';
-                
+
                 // Simulate analysis delay
                 setTimeout(function() {
                     loadingSection.style.display = 'none';
                     resultsSection.style.display = 'block';
-                    
-                    // Populate with mock data
-                    document.getElementById('defectType').textContent = defectData.type;
-                    document.getElementById('defectCauses').textContent = defectData.causes;
-                    document.getElementById('defectOverview').textContent = defectData.overview;
-                    document.getElementById('defectImpact').textContent = defectData.impact;
-                    document.getElementById('preventionStrategy').textContent = defectData.prevention;
-                    
+
+                    // Randomly select a data sample
+                    const randomIndex = Math.floor(Math.random() * allDefectData.length);
+                    const selectedData = allDefectData[randomIndex];
+
+                    // Populate with the randomly selected data
+                    defectTypeElement.textContent = selectedData.type;
+                    defectCausesElement.textContent = selectedData.causes;
+                    defectOverviewElement.textContent = selectedData.overview;
+                    defectImpactElement.textContent = selectedData.impact;
+                    preventionStrategyElement.textContent = selectedData.prevention;
+
                 }, 2000);
             });
-            
+
             // Tab functionality
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
                     const tabId = this.getAttribute('data-tab');
-                    
+
                     tabs.forEach(t => t.classList.remove('active'));
                     tabContents.forEach(content => content.classList.remove('active'));
-                    
+
                     this.classList.add('active');
                     document.getElementById(tabId).classList.add('active');
                 });
             });
-            
+
             // Reset functionality
             newAnalysisBtn.addEventListener('click', function() {
                 resultsSection.style.display = 'none';
