@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Industry 4.0 - Defect Detection System</title>
+    <style>
+        :root {
+            --primary: #1a73e8;
+            --primary-dark: #0d47a1;
+            --secondary: #4fc3f7;
+            --accent: #ff9800;
+            --text: #333;
+            --text-light: #777;
+            --bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        nav ul li a:hover {
+            opacity: 0.8;
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                        url('/api/placeholder/1200/400') center/cover no-repeat;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 16px;
+            color: var(--primary-dark);
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+        
+        .upload-section {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .upload-box {
+            border: 2px dashed var(--secondary);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 20px 0;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .upload-box:hover {
+            background-color: rgba(79, 195, 247, 0.1);
+        }
+        
+        .upload-box i {
+            font-size: 48px;
+            color: var(--secondary);
+            margin-bottom: 16px;
+        }
+        
+        .upload-box p {
+            color: var(--text-light);
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+        }
+        
+        .results-section {
+            display: none;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin: 40px auto;
+            max-width: 800px;
+            box-shadow: var(--shadow);
+        }
+        
+        .preview-container {
+            display: flex;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+        
+        .image-preview {
+            flex: 1;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .image-preview img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .defect-details {
+            flex: 1;
+        }
+        
+        .defect-details h3 {
+            color: var(--primary);
+            margin-bottom: 16px;
+        }
+        
+        .detail-card {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+        
+        .detail-card h4 {
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+        
+        .actions-container {
+            background-color: #f5f5f5;
+            padding: 20px;
+            border-radius: var(--border-radius);
+        }
+        
+        .tab-container {
+            margin-top: 30px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 16px;
+            margin-top: 20px;
+        }
+        
+        .stat-card {
+            background-color: var(--white);
+            padding: 16px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        
+        .stat-card h4 {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+        
+        .stat-card p {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .actions-list {
+            list-style: none;
+        }
+        
+        .actions-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .actions-list li:last-child {
+            border-bottom: none;
+        }
+        
+        footer {
+            background-color: #333;
+            color: var(--white);
+            padding: 40px 0;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .footer-column {
+            flex: 1;
+            min-width: 200px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+        
+        .footer-column ul li a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--white);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            margin-top: 20px;
+            color: #bbb;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 16px;
+            }
+            
+            .preview-container {
+                flex-direction: column;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">SmartDetect</div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero">
+        <div class="container">
+            <h1>Industry 4.0</h1>
+            <p>Advanced Defect Detection System</p>
+            <p>Upload an image of any manufacturing component and get AI-powered analysis of defects, causes, and recommended solutions.</p>
+        </div>
+    </section>
+    
+    <section class="upload-section container">
+        <h2>Upload Product Image</h2>
+        <p>Drag and drop your image or click to select a file</p>
+        
+        <div class="upload-box" id="uploadBox">
+            <i>📁</i>
+            <p>JPG, PNG or BMP files (Max 10MB)</p>
+            <input type="file" id="fileInput" accept="image/*" style="display: none;">
+        </div>
+        
+        <button class="btn" id="analyzeBtn">Analyze Defect</button>
+    </section>
+    
+    <div class="loading" id="loadingSection">
+        <div class="spinner"></div>
+        <p>Analyzing image for defects...</p>
+    </div>
+    
+    <section class="results-section" id="resultsSection">
+        <h2>Defect Analysis Results</h2>
+        
+        <div class="preview-container">
+            <div class="image-preview">
+                <img id="previewImage" src="/api/placeholder/400/300" alt="Product image">
+            </div>
+            
+            <div class="defect-details">
+                <h3>Defect Details</h3>
+                <div class="detail-card">
+                    <h4>Defect Type</h4>
+                    <p id="defectType">Surface Crack - Severity: High</p>
+                </div>
+                <div class="detail-card">
+                    <h4>Probable Causes</h4>
+                    <p id="defectCauses">Material stress during cooling process, improper handling during production</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="overview">Overview</div>
+                <div class="tab" data-tab="recommendations">Recommendations</div>
+                <div class="tab" data-tab="statistics">Statistics</div>
+            </div>
+            
+            <div class="tab-content active" id="overview">
+                <h3>Defect Overview</h3>
+                <p id="defectOverview">This appears to be a longitudinal surface crack extending approximately 2.3cm along the edge of the component. This type of defect typically occurs during rapid cooling of the material or excessive stress during the manufacturing process. The crack depth is estimated at 0.8mm, which exceeds acceptable thresholds for this component type.</p>
+                
+                <h3>Impact Assessment</h3>
+                <p id="defectImpact">This defect significantly reduces the structural integrity of the component, leading to potential failure under load conditions. Components with this defect type have an estimated 73% higher failure rate and reduced operational lifespan by approximately 45%. Immediate replacement is recommended.</p>
+            </div>
+            
+            <div class="tab-content" id="recommendations">
+                <h3>Recommended Actions</h3>
+                <div class="actions-container">
+                    <ol class="actions-list">
+                        <li>Replace the component immediately if it's already in use</li>
+                        <li>Adjust cooling rate in the manufacturing process to 3.5°C/min</li>
+                        <li>Implement additional quality control checkpoints after the cooling stage</li>
+                        <li>Review material composition for potential improvements</li>
+                        <li>Consider stress-relief heat treatment before final machining</li>
+                    </ol>
+                </div>
+                
+                <h3>Prevention Strategy</h3>
+                <p id="preventionStrategy">To prevent future occurrences of this defect, implement a slower cooling process with controlled temperature gradients. Monitor environmental variables during manufacturing, particularly humidity and ambient temperature. Consider implementing automated visual inspection systems at multiple points in the production line to catch defects earlier.</p>
+            </div>
+            
+            <div class="tab-content" id="statistics">
+                <h3>Defect Statistics</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <h4>Detection Confidence</h4>
+                        <p>96.7%</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Similar Cases</h4>
+                        <p>142</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Average Repair Cost</h4>
+                        <p>$650</p>
+                    </div>
+                    <div class="stat-card">
+                        <h4>Est. Downtime</h4>
+                        <p>4.5 hrs</p>
+                    </div>
+                </div>
+                
+                <h3>Historical Comparison</h3>
+                <p>This defect pattern matches historical cases from similar manufacturing processes. The severity is higher than 78% of previously documented cases, suggesting a significant deviation in production parameters.</p>
+            </div>
+        </div>
+        
+        <button class="btn" id="newAnalysisBtn">Start New Analysis</button>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>SmartDetect</h3>
+                    <p>Advanced defect detection powered by Industry 4.0 technologies and machine learning.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Features</h3>
+                    <ul>
+                        <li><a href="#">Defect Detection</a></li>
+                        <li><a href="#">Quality Analysis</a></li>
+                        <li><a href="#">Process Optimization</a></li>
+                        <li><a href="#">Reporting Tools</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Documentation</a></li>
+                        <li><a href="#">API Reference</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 SmartDetect. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadBox = document.getElementById('uploadBox');
+            const fileInput = document.getElementById('fileInput');
+            const analyzeBtn = document.getElementById('analyzeBtn');
+            const loadingSection = document.getElementById('loadingSection');
+            const resultsSection = document.getElementById('resultsSection');
+            const previewImage = document.getElementById('previewImage');
+            const newAnalysisBtn = document.getElementById('newAnalysisBtn');
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            // Mock defect data for demonstration
+            const defectData = {
+                type: "Surface Crack - Severity: High",
+                causes: "Material stress during cooling process, improper handling during production",
+                overview: "This appears to be a longitudinal surface crack extending approximately 2.3cm along the edge of the component. This type of defect typically occurs during rapid cooling of the material or excessive stress during the manufacturing process. The crack depth is estimated at 0.8mm, which exceeds acceptable thresholds for this component type.",
+                impact: "This defect significantly reduces the structural integrity of the component, leading to potential failure under load conditions. Components with this defect type have an estimated 73% higher failure rate and reduced operational lifespan by approximately 45%. Immediate replacement is recommended.",
+                prevention: "To prevent future occurrences of this defect, implement a slower cooling process with controlled temperature gradients. Monitor environmental variables during manufacturing, particularly humidity and ambient temperature. Consider implementing automated visual inspection systems at multiple points in the production line to catch defects earlier."
+            };
+            
+            // Upload functionality
+            uploadBox.addEventListener('click', function() {
+                fileInput.click();
+            });
+            
+            uploadBox.addEventListener('dragover', function(e) {
+                e.preventDefault();
+                uploadBox.style.backgroundColor = 'rgba(79, 195, 247, 0.1)';
+            });
+            
+            uploadBox.addEventListener('dragleave', function() {
+                uploadBox.style.backgroundColor = '';
+            });
+            
+            uploadBox.addEventListener('drop', function(e) {
+                e.preventDefault();
+                uploadBox.style.backgroundColor = '';
+                if (e.dataTransfer.files.length) {
+                    handleFile(e.dataTransfer.files[0]);
+                }
+            });
+            
+            fileInput.addEventListener('change', function() {
+                if (fileInput.files.length) {
+                    handleFile(fileInput.files[0]);
+                }
+            });
+            
+            function handleFile(file) {
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                        uploadBox.innerHTML = `<p>Selected: ${file.name}</p>`;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    alert('Please select an image file');
+                }
+            }
+            
+            // Analysis functionality
+            analyzeBtn.addEventListener('click', function() {
+                if (previewImage.src.includes('placeholder')) {
+                    alert('Please upload an image first');
+                    return;
+                }
+                
+                loadingSection.style.display = 'block';
+                
+                // Simulate analysis delay
+                setTimeout(function() {
+                    loadingSection.style.display = 'none';
+                    resultsSection.style.display = 'block';
+                    
+                    // Populate with mock data
+                    document.getElementById('defectType').textContent = defectData.type;
+                    document.getElementById('defectCauses').textContent = defectData.causes;
+                    document.getElementById('defectOverview').textContent = defectData.overview;
+                    document.getElementById('defectImpact').textContent = defectData.impact;
+                    document.getElementById('preventionStrategy').textContent = defectData.prevention;
+                    
+                }, 2000);
+            });
+            
+            // Tab functionality
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Reset functionality
+            newAnalysisBtn.addEventListener('click', function() {
+                resultsSection.style.display = 'none';
+                previewImage.src = '/api/placeholder/400/300';
+                uploadBox.innerHTML = '<i>📁</i><p>JPG, PNG or BMP files (Max 10MB)</p>';
+                fileInput.value = '';
+            });
+        });
+    </script>
+</body>
+</html>
